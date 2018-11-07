@@ -1,0 +1,111 @@
+﻿<Window x:Class="Assignment3Conv.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ViewModels="clr-namespace:Assignment3Conv.ViewModels"
+        xmlns:local="clr-namespace:Assignment3Conv.Views"
+        xmlns:vm="clr-namespace:Assignment3Conv.ViewModels"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+
+    <Window.DataContext>
+        <vm:MainVM/>
+    </Window.DataContext>
+
+    <Grid DataContext="{Binding ChildVMs}">
+        <TabControl x:Name="mainTabControl" HorizontalAlignment="Left" Height="399" Margin="10,10,0,0" VerticalAlignment="Top" Width="772">
+            <TabItem x:Name="ClientsTab" Header="Clients">
+                <Grid Background="#FFE5E5E5">
+                    <Label x:Name="ClientNameLbl" Content="Client Name" HorizontalAlignment="Left" Margin="39,60,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="CompanyLbl" Content="Company" HorizontalAlignment="Left" Margin="39,103,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.474,-0.516"/>
+                    <TextBox x:Name="ClientNameTxBx" Text="{Binding [1].Name}" HorizontalAlignment="Left" Height="26" Margin="126,60,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="186"/>
+                    <ComboBox x:Name="CompanyTxBx" ItemsSource="{Binding [2].CompanyList}" SelectedValue="{Binding [1].Company}" SelectedValuePath ="Name" DisplayMemberPath="Name" HorizontalAlignment="Left" Height="26" Margin="126,103,0,0" VerticalAlignment="Top" Width="186"/>
+                    <Label x:Name="PositionLbl" Content="Position" HorizontalAlignment="Left" Margin="39,152,0,0" VerticalAlignment="Top"/>
+                    <ComboBox x:Name="PositionBx" SelectedValue="{Binding [1].Position}" SelectedValuePath ="Name" HorizontalAlignment="Left" Margin="126,152,0,0" VerticalAlignment="Top" Width="186">
+                        <ComboBoxItem  Name="Manager">Manager</ComboBoxItem>
+                        <ComboBoxItem  Name="Employee">Employee</ComboBoxItem>
+                        <ComboBoxItem  Name="Rep">Rep</ComboBoxItem>
+                    </ComboBox>
+                    <Label x:Name="ClientListLbl" Content="Client List" HorizontalAlignment="Left" Margin="536,47,0,0" VerticalAlignment="Top"/>
+                    <ListView x:Name="ClientListTxBx" ItemsSource="{Binding [1].ClientList}" HorizontalAlignment="Left" Height="267" Margin="382,71,0,0" VerticalAlignment="Top" Width="367">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"/>
+                                <GridViewColumn Header="Company" DisplayMemberBinding="{Binding Company}"/>
+                                <GridViewColumn Header="Position" DisplayMemberBinding="{Binding Position}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <Button x:Name="ClientSubmitBtn" Command="{Binding [1].ClientSubmit}" Content="Submit" HorizontalAlignment="Left" Height="25" Margin="264,196,0,0" VerticalAlignment="Top" Width="48"/>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="AddressTab" Header="Addresses">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="165*"/>
+                        <ColumnDefinition Width="14*"/>
+                        <ColumnDefinition Width="587*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label x:Name="ClientsLbl" Content="Clients" HorizontalAlignment="Left" Margin="44,10,0,0" VerticalAlignment="Top"/>
+                    <ListView x:Name="ClientsListTxBx2" ItemsSource="{Binding [1].ClientList}" SelectedIndex ="0" SelectedItem="{Binding [0].selectedClient}" HorizontalAlignment="Left" Height="292" Margin="10,38,0,0" VerticalAlignment="Top" Width="144">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <Label x:Name="Known_AddressesLbl" Content="Known Addresses" HorizontalAlignment="Left" Margin="231.709,12,0,0" VerticalAlignment="Top" Grid.Column="2"/>
+                    <ListView x:Name="KnownAddressesTxBx" ItemsSource="{Binding [0].AddressList}" SelectedItem="{Binding [0].selectedAddress}" HorizontalAlignment="Left" Height="180" Margin="162,38,0,0" VerticalAlignment="Top" Width="582" Grid.ColumnSpan="3">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Street" DisplayMemberBinding="{Binding Street}"/>
+                                <GridViewColumn Header="City" DisplayMemberBinding="{Binding City}"/>
+                                <GridViewColumn Header="State" DisplayMemberBinding="{Binding State}"/>
+                                <GridViewColumn Header="Zip" DisplayMemberBinding="{Binding Zip}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <Label x:Name="StreetLbl" Content="Street Address" HorizontalAlignment="Left" Margin="27.709,223,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.506,1.115" Grid.Column="2"/>
+                    <Label x:Name="CityLbl" Content="City" HorizontalAlignment="Left" Margin="84.709,254,0,0" VerticalAlignment="Top" Grid.Column="2"/>
+                    <Label x:Name="StateLbl" Content="State" HorizontalAlignment="Left" Margin="77.709,283,0,0" VerticalAlignment="Top" Grid.Column="2"/>
+                    <Label x:Name="ZipLbl" Content="Zip" HorizontalAlignment="Left" Margin="87.709,314,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.185,0.577" Grid.Column="2"/>
+                    <TextBox x:Name="StreetTxBx" Text="{Binding [0].Street}" HorizontalAlignment="Left" Height="26" Margin="130.709,223,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="434" Grid.Column="2"/>
+                    <TextBox x:Name="CityTxBx" Text="{Binding [0].City}" HorizontalAlignment="Left" Height="26" Margin="130.709,253,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="434" Grid.Column="2"/>
+                    <TextBox x:Name="StateTxBx" Text="{Binding [0].State}" HorizontalAlignment="Left" Height="26" Margin="130.709,283,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="434" Grid.Column="2"/>
+                    <TextBox x:Name="ZipTxBx" Text="{Binding [0].Zip}" HorizontalAlignment="Left" Height="26" Margin="130.709,314,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="434" Grid.Column="2"/>
+                    <Button x:Name="AddressSubmitBtn" Command="{Binding [0].AddressSubmit}"  Content="Submit" HorizontalAlignment="Left" Margin="130.709,345,0,0" VerticalAlignment="Top" Width="75" Grid.Column="2"/>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="CompaniesTab" Header="Companies">
+                <Grid Background="#FFE5E5E5">
+                    <Label x:Name="CoNameLbl" Content="Company Name" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="CoStreetLbl" Content="Street Address" HorizontalAlignment="Left" Margin="20,41,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.142,-0.926"/>
+                    <Label x:Name="CoCityLbl" Content="City" HorizontalAlignment="Left" Margin="76,72,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="CoStateLbl" Content="State" HorizontalAlignment="Left" Margin="70,103,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="CoZipLbl" Content="Zip" HorizontalAlignment="Left" Margin="79,134,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="CoStreetTxBx" Text="{Binding [2].Street}" HorizontalAlignment="Left" Height="26" Margin="107,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225"/>
+                    <TextBox x:Name="CoCityTxBx" Text="{Binding [2].City}" HorizontalAlignment="Left" Height="26" Margin="107,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225"/>
+                    <TextBox x:Name="CoStateTxBx" Text="{Binding [2].State}" HorizontalAlignment="Left" Height="26" Margin="107,103,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225"/>
+                    <TextBox x:Name="CoZipTxBx" Text="{Binding [2].Zip}" HorizontalAlignment="Left" Height="26" Margin="107,134,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225"/>
+                    <Button x:Name="CoSubmitBtn" Command="{Binding [2].CompanySubmit}" Content="Submit" HorizontalAlignment="Left" Margin="257,165,0,0" VerticalAlignment="Top" Width="75"/>
+                    <TextBox x:Name="CoNameTxBx" Text="{Binding [2].Name}" HorizontalAlignment="Left" Height="22" Margin="107,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225"/>
+                    <ListView x:Name="CoListTxBx" ItemsSource="{Binding [2].CompanyList}" SelectedItem="{Binding [2].selectedCompany}" HorizontalAlignment="Left" Height="268" Margin="381,35,0,0" VerticalAlignment="Top" Width="365">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"/>
+                                <GridViewColumn Header="Street" DisplayMemberBinding="{Binding Street}"/>
+                                <GridViewColumn Header="City" DisplayMemberBinding="{Binding City}"/>
+                                <GridViewColumn Header="State" DisplayMemberBinding="{Binding State}"/>
+                                <GridViewColumn Header="Zip" DisplayMemberBinding="{Binding Zip}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <Label x:Name="CompaniesLbl" Content="Companies" HorizontalAlignment="Left" Margin="530,9,0,0" VerticalAlignment="Top"/>
+
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Window>
