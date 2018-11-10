@@ -7,4 +7,7 @@ The project uses Entity framework 6 for data persistence (DataLayer).
 ![](/companyTab.jpg)
 ![](/addressTab.jpg)
 ![](/api.jpg)
-https://github.com/chardur/c-FinalSummer18/blob/master/clientTab.jpg
+
+<p align="center">
+<img src="https://github.com/chardur/c-FinalSummer18/blob/master/clientTab.jpg">
+</p> 
