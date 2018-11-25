@@ -9,5 +9,5 @@ The project uses Entity framework 6 for data persistence (DataLayer).
 ![](/api.jpg)
 
 <p>
-<img src="https://github.com/chardur/c-FinalSummer18/blob/master/clientTab.jpg" alt="">
+<img src="/clientTab.jpg" alt="image">
 </p>
