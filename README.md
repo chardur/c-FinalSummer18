@@ -8,5 +8,5 @@ The project uses Entity framework 6 for data persistence (DataLayer).
 <img src="clientTab.jpg" alt="image">
 <img src="companyTab.jpg" alt="image">
 <img src="addressTab.jpg" alt="image">
-<img src="apiTab.jpg" alt="image">
+<img src="api.jpg" alt="image">
 </p>
