@@ -9,5 +9,5 @@ The project uses Entity framework 6 for data persistence (DataLayer).
 ![](/api.jpg)
 
 <p>
-<img src="/clientTab.jpg" alt="image">
+<img src="clientTab.jpg" alt="image">
 </p>
